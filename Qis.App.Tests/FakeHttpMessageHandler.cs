@@ -4,11 +4,14 @@ using System.Threading.Tasks;
 
 namespace Qis.App.Tests
 {
+    /// <summary>
+    /// Helper class to enable mocking http requests and responses
+    /// </summary>
     public class FakeHttpMessageHandler : HttpMessageHandler
     {
         public virtual HttpResponseMessage Send(HttpRequestMessage request)
         {
-            throw new NotImplementedException("Now we can setup this method with our mocking framework");
+            throw new NotImplementedException("This is meant to be mocked in a unit test");
         }
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, System.Threading.CancellationToken cancellationToken)
