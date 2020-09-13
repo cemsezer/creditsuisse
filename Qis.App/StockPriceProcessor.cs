@@ -21,12 +21,7 @@ namespace Qis.App
 
             return stockPrices
                 .GroupBy(s => s.Exchange)
-                .Select(g => new
-                {
-                    Exchange = g.Key,
-                    Symbols = g.Where(x => x.DailyGain == g.OrderByDescending(y => y.DailyGain).First().DailyGain).Select(z => z.Symbol).ToList()
-                })
-                .ToDictionary(g => g.Exchange, g => g.Symbols);
+                .ToDictionary(g => g.Key, g => g.Where(x => x.DailyGain == g.OrderByDescending(y => y.DailyGain).First().DailyGain).Select(z => z.Symbol).ToList());
         }
     }
 }
